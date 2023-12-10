@@ -9,7 +9,7 @@ import { BrowserRouter as Router, useParams } from 'react-router-dom';
 import Footer from './components/Footer';
 import Database from './components/Database';
 import GoodScore from './components/GoodScore';
-import InterMediate from './components/InterMediate';
+
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
 
           <Route path='/form' element={< Form />} />
           <Route path='/good' element={< GoodScore />} />
-          <Route path='/critical' element={< InterMediate />} />
+       
         </Routes>
 
       </Router>
