@@ -74,8 +74,8 @@ export default function Nav() {
                                         />
                                     </Center>
                                     <br />
-                                    <Center>
-                                        <p>Username</p>
+                                    <Center color={'black'}>
+                                        <p style={{ color: "black" }}>Username</p>
                                     </Center>
                                     <br />
                                     <MenuDivider />

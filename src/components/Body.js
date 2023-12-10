@@ -9,7 +9,7 @@ const Body = () => {
     return (
         <div>
             <section class="headline">
-                <div className='headline-text'> Check your Social score now</div>
+                <div className='headline-text'> Check your Mental score now</div>
                 <div>
                     <a href="/form" class="button1" rel="noopener" style={{ textDecoration: "none" }}>Check Now</a></div>
             </section>

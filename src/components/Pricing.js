@@ -12,7 +12,7 @@ const Pricing = () => {
                 <ul class="pricing-table__list">
                     <li>30 day free trial</li>
                     <li>Accurate Scoring</li>
-                    <li>20% discount</li>
+                    <li>20% discount on our wearables</li>
 
 
                 </ul>
@@ -27,8 +27,9 @@ const Pricing = () => {
                 <ul class="pricing-table__list">
                     <li>50 day free trial</li>
                     <li>Accurate Scoring</li>
-                    <li>20% discount</li>
-                    <li>Access to leaderboard</li>
+                    <li>20% discount on our wearables</li>
+
+                    <li>Access to anonymous public ranting portal</li>
 
                 </ul>
             </div>

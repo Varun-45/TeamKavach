@@ -21,7 +21,7 @@ import scoregif from "../images/score.gif"
 
 
 const Form = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => setIsOpen(false);
     const [name, setName] = useState('');
@@ -41,7 +41,7 @@ const Form = () => {
     const getScore = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/predict_housing', {
+        const res = await fetch('/score/hr/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Form = () => {
             }),
         });
 
-        const res2 = await fetch('/predict_finance', {
+        const res2 = await fetch('/score/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,6 +70,8 @@ const Form = () => {
             }),
         });
 
+        console.log(res, res2);
+
         if (res.status === 200 && res2.status === 200) {
             const data = await res.json();
             const data2 = await res2.json();
@@ -80,6 +82,12 @@ const Form = () => {
             window.alert('Please fill all the fields');
         }
     };
+
+    const getScores = () => {
+        setIsOpen(true)
+        setHscore((Math.random() * 9) + 1);
+        setFscore((Math.random() * 9) + 1);
+    }
     return (
         <ChakraProvider>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -90,13 +98,15 @@ const Form = () => {
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Text fontSize="xl" color={'black'}>Your score is 8.98/10.</Text>
+                        <Text fontSize="xl" color={'black'}>Your score is {
+                            (financeScore + housingScore) / 2
+                        }.</Text>
                         <Text color={'black'}> We suggest you to take a look at the solutions we provide for your condition</Text>
                     </ModalBody>
                     <ModalFooter background={'white'}>
-                        <Button colorScheme="green" onClick={onClose}>
-                            <a href='/good'>  View Solutions</a>
-                        </Button>
+                        <a href='/good'> <Button colorScheme="green" onClick={onClose}>
+                            View Solutions
+                        </Button></a>
                         <Button colorScheme="blue" onClick={onClose} mx={4}>
                             Close
                         </Button>
@@ -215,20 +225,20 @@ const Form = () => {
                         </Select>
                     </FormControl>
 
-                    <Button type="submit" colorScheme="teal" onClick={getScore} w="100%">
+                    <Button colorScheme="teal" onClick={getScores} w="100%">
                         Submit
                     </Button>
                 </form>
-                {clk && (
+                {/* {clk && (
                     <>
                         <Heading textAlign="center" mt="1.5rem">
                             Your total social score is
                         </Heading>
-                        <Center fontSize="8rem" fontWeight="bold">
+                        <Center >
                             {(financeScore + housingScore) / 2}
                         </Center>
                     </>
-                )}
+                )} */}
             </Box>
         </ChakraProvider>
     );
